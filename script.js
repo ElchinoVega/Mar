@@ -69,7 +69,7 @@ function createSpecialHeartForMarina() {
         '',
         ...selectedAsciiArt,
         '',
-        '           💕 Una persona muy especial 💕',
+        '           💕 Marina 💕',
         ''
     ];
     
