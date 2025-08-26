@@ -76,7 +76,7 @@ function createSpecialHeartForMarina() {
         '´´´´´´´´´¶¶¶¶¶¶¶¶',
         '´´´´´´´´´´´¶¶¶¶',
         '',
-        '           💕 Una persona muy especial 💕',
+        '           💕💕',
         ''
     ];
     
