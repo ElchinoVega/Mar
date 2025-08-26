@@ -28,7 +28,13 @@
                 <div class="compatibility-result" id="compatibilityResult">
                     <div class="compatibility-score" id="compatibilityScore"></div>
                     <div class="compatibility-description" id="compatibilityDescription">Analizando compatibilidad...</div>
-                    <button onclick="changeMessage()" class="heart-button" id="heartButton" style="display: none;">💖</button>
+                    <div class="heart-button-container" id="heartButtonContainer" style="display: none;">
+                        <div class="heart-instruction">
+                            <span class="instruction-text">Presiona aquí</span>
+                            <span class="instruction-arrow">↓</span>
+                        </div>
+                        <button onclick="changeMessage()" class="heart-button" id="heartButton">💖</button>
+                    </div>
                 </div>
             </div>
             <button onclick="resetForm()" class="reset-btn">volver💕</button>

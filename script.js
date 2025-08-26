@@ -118,7 +118,7 @@ let currentMessageIndex = 0;
 function showSpecialLoveMessage() {
     const scoreElement = document.getElementById('compatibilityScore');
     const descriptionElement = document.getElementById('compatibilityDescription');
-    const heartButton = document.getElementById('heartButton');
+    const heartButtonContainer = document.getElementById('heartButtonContainer');
     
     // Mostrar mensaje amoroso especial
     scoreElement.innerHTML = '💖 Mensaje Especial 💖';
@@ -133,11 +133,11 @@ function showSpecialLoveMessage() {
     descriptionElement.style.opacity = '1';
     descriptionElement.style.display = 'block';
     
-    // Mostrar el botón corazón después de 3 segundos
+    // Mostrar el contenedor del botón corazón después de 3 segundos
     setTimeout(() => {
-        heartButton.style.display = 'flex';
-        heartButton.style.opacity = '0';
-        heartButton.style.animation = 'buttonReveal 1s ease-out forwards';
+        heartButtonContainer.style.display = 'flex';
+        heartButtonContainer.style.opacity = '0';
+        heartButtonContainer.style.animation = 'buttonReveal 1s ease-out forwards';
     }, 3000);
     
     console.log('💕 Mensaje especial mostrado para Marina:', currentMessageIndex + 1);
@@ -193,7 +193,7 @@ function resetForm() {
     const verificationSection = document.getElementById('verificationSection');
     const animationSection = document.getElementById('animationSection');
     const verificationInput = document.getElementById('verificationInput');
-    const heartButton = document.getElementById('heartButton');
+    const heartButtonContainer = document.getElementById('heartButtonContainer');
     
     animationSection.style.display = 'none';
     verificationSection.style.display = 'block';
@@ -204,9 +204,9 @@ function resetForm() {
     // Resetear el índice del mensaje para la próxima vez
     currentMessageIndex = 0;
     
-    // Ocultar el botón corazón
-    if (heartButton) {
-        heartButton.style.display = 'none';
+    // Ocultar el contenedor del botón corazón
+    if (heartButtonContainer) {
+        heartButtonContainer.style.display = 'none';
     }
 }
 
