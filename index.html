@@ -8,59 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <div class="question-section" id="questionSection">
-            <h1>💕 Compatibilidad del Amor 💕</h1>
-            <h2>¡Descubre si son compatibles!</h2>
+        <!-- Pantalla inicial de verificación -->
+        <div class="verification-section" id="verificationSection">
+            <h1>💕 Una Pregunta Especial 💕</h1>
+            <h2>¿Eres tú la persona correcta?</h2>
             
-            
-            <div class="couple-inputs">
-                <div class="person-input">
-                    <label>Primera persona:</label>
-                    <input type="text" id="name1Input" placeholder="Nombre..." maxlength="15">
-                    <select id="sign1Select">
-                        <option value="">Signo zodiacal</option>
-                        <option value="aries">Aries</option>
-                        <option value="tauro">Tauro</option>
-                        <option value="geminis">Géminis</option>
-                        <option value="cancer">Cáncer</option>
-                        <option value="leo">Leo</option>
-                        <option value="virgo">Virgo</option>
-                        <option value="libra">Libra</option>
-                        <option value="escorpio">Escorpio</option>
-                        <option value="sagitario">Sagitario</option>
-                        <option value="capricornio">Capricornio</option>
-                        <option value="acuario">Acuario</option>
-                        <option value="piscis">Piscis</option>
-                    </select>
-                </div>
-                
-                <div class="love-symbol">💖</div>
-                
-                <div class="person-input">
-                    <label>Segunda persona:</label>
-                    <input type="text" id="name2Input" placeholder="Nombre..." maxlength="15">
-                    <select id="sign2Select">
-                        <option value="">Signo zodiacal</option>
-                        <option value="aries">Aries</option>
-                        <option value="tauro">Tauro</option>
-                        <option value="geminis">Géminis</option>
-                        <option value="cancer">Cáncer</option>
-                        <option value="leo">Leo</option>
-                        <option value="virgo">Virgo</option>
-                        <option value="libra">Libra</option>
-                        <option value="escorpio">Escorpio</option>
-                        <option value="sagitario">Sagitario</option>
-                        <option value="capricornio">Capricornio</option>
-                        <option value="acuario">Acuario</option>
-                        <option value="piscis">Piscis</option>
-                    </select>
-                </div>
+            <div class="verification-input">
+                <input type="text" id="verificationInput" placeholder="Escribe tu nombre..." maxlength="20">
+                <button onclick="verifyPerson()" id="verifyBtn">Enviar ✨</button>
             </div>
-            
-            <button onclick="checkCompatibility()" id="submitBtn">Descubrir compatibilidad ✨</button>
         </div>
+
         
         <div class="animation-section" id="animationSection" style="display: none;">
+            <button onclick="resetForm()" class="close-btn">✕ Cerrar</button>
             <div class="heart-container">
                 <div class="heart-text" id="heartText"></div>
                 <div class="arrow" id="arrow">💘</div>
@@ -69,7 +30,7 @@
                     <div class="compatibility-description" id="compatibilityDescription">Analizando compatibilidad...</div>
                 </div>
             </div>
-            <button onclick="resetForm()" class="reset-btn">Intentar otra pareja</button>
+            <button onclick="resetForm()" class="reset-btn">volver💕</button>
         </div>
         
         <div class="floating-hearts">
