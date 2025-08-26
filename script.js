@@ -115,6 +115,29 @@ const loveMessages = [
 
 let currentMessageIndex = 0;
 
+// Variables para el reproductor de música
+let currentSongIndex = 0;
+let isPlaying = false;
+let songs = [
+    {
+        title: "Tu Canción Favorita",
+        artist: "Artista Especial",
+        file: "music/cancion1.mp3"
+    },
+    {
+        title: "Nuestra Melodía",
+        artist: "Recuerdos Bonitos",
+        file: "music/cancion2.mp3"
+    },
+    {
+        title: "Momentos Especiales",
+        artist: "Para Ti",
+        file: "music/cancion3.mp3"
+    }
+];
+
+let musicSectionShown = false;
+
 function showSpecialLoveMessage() {
     const scoreElement = document.getElementById('compatibilityScore');
     const descriptionElement = document.getElementById('compatibilityDescription');
@@ -138,6 +161,11 @@ function showSpecialLoveMessage() {
         heartButtonContainer.style.display = 'flex';
         heartButtonContainer.style.opacity = '0';
         heartButtonContainer.style.animation = 'buttonReveal 1s ease-out forwards';
+        
+        // Mostrar la sección de Spotify después de 5 segundos más
+        setTimeout(() => {
+            showSpotifySection();
+        }, 5000);
     }, 3000);
     
     console.log('💕 Mensaje especial mostrado para Marina:', currentMessageIndex + 1);
@@ -282,6 +310,150 @@ const styleSheet = document.createElement('style');
 styleSheet.textContent = sparkleCSS;
 document.head.appendChild(styleSheet);
 
+// Función para mostrar la sección de Spotify
+function showSpotifySection() {
+    const spotifySection = document.getElementById('spotifySection');
+    spotifySection.style.display = 'block';
+    spotifySection.style.opacity = '0';
+    spotifySection.style.animation = 'fadeInUp 1s ease-out forwards';
+    
+    console.log('🎵 Mostrando playlist de Spotify');
+}
+
+function showMusicPlayer() {
+    const musicPlayer = document.getElementById('musicPlayer');
+    const playlist = document.getElementById('playlist');
+    const toggleBtn = document.getElementById('musicToggleBtn');
+    
+    if (musicPlayer.style.display === 'none' || musicPlayer.style.display === '') {
+        musicPlayer.style.display = 'block';
+        playlist.style.display = 'block';
+        toggleBtn.textContent = '🎵 Ocultar Música';
+    } else {
+        musicPlayer.style.display = 'none';
+        playlist.style.display = 'none';
+        toggleBtn.textContent = '🎵 Mostrar Música';
+    }
+}
+
+function loadPlaylist() {
+    const playlistItems = document.getElementById('playlistItems');
+    playlistItems.innerHTML = '';
+    
+    songs.forEach((song, index) => {
+        const songItem = document.createElement('div');
+        songItem.className = 'playlist-item';
+        songItem.innerHTML = `
+            <div class="song-info">
+                <div class="song-name">${song.title}</div>
+                <div class="song-artist">${song.artist}</div>
+            </div>
+            <button onclick="playSong(${index})" class="play-song-btn">▶️</button>
+        `;
+        
+        if (index === currentSongIndex) {
+            songItem.classList.add('active');
+        }
+        
+        playlistItems.appendChild(songItem);
+    });
+}
+
+function playSong(index) {
+    currentSongIndex = index;
+    const song = songs[currentSongIndex];
+    const audioPlayer = document.getElementById('audioPlayer');
+    
+    // Actualizar interfaz
+    document.getElementById('currentSongTitle').textContent = song.title;
+    document.getElementById('currentSongArtist').textContent = song.artist;
+    
+    // Cargar y reproducir canción
+    audioPlayer.src = song.file;
+    audioPlayer.load();
+    
+    audioPlayer.play().then(() => {
+        isPlaying = true;
+        updatePlayPauseButton();
+        updateActivePlaylistItem();
+    }).catch(error => {
+        console.log('Error al reproducir:', error);
+        alert('⚠️ No se pudo cargar la canción. Asegúrate de que el archivo existe en la carpeta "music".');
+    });
+}
+
+function togglePlayPause() {
+    const audioPlayer = document.getElementById('audioPlayer');
+    
+    if (audioPlayer.src === '' || audioPlayer.src === window.location.href) {
+        // Si no hay canción cargada, reproducir la primera
+        playSong(0);
+        return;
+    }
+    
+    if (isPlaying) {
+        audioPlayer.pause();
+        isPlaying = false;
+    } else {
+        audioPlayer.play().then(() => {
+            isPlaying = true;
+        }).catch(error => {
+            console.log('Error al reproducir:', error);
+        });
+    }
+    
+    updatePlayPauseButton();
+}
+
+function updatePlayPauseButton() {
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    playPauseBtn.textContent = isPlaying ? '⏸️' : '▶️';
+}
+
+function previousSong() {
+    currentSongIndex = currentSongIndex > 0 ? currentSongIndex - 1 : songs.length - 1;
+    playSong(currentSongIndex);
+}
+
+function nextSong() {
+    currentSongIndex = currentSongIndex < songs.length - 1 ? currentSongIndex + 1 : 0;
+    playSong(currentSongIndex);
+}
+
+function updateActivePlaylistItem() {
+    const playlistItems = document.querySelectorAll('.playlist-item');
+    playlistItems.forEach((item, index) => {
+        if (index === currentSongIndex) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+function setVolume() {
+    const volumeSlider = document.getElementById('volumeSlider');
+    const audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.volume = volumeSlider.value / 100;
+}
+
+function setProgress(event) {
+    const progressBar = event.currentTarget;
+    const clickX = event.offsetX;
+    const width = progressBar.offsetWidth;
+    const audioPlayer = document.getElementById('audioPlayer');
+    
+    if (audioPlayer.duration) {
+        audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
+    }
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Enfocar en el campo de verificación al cargar
     document.getElementById('verificationInput').focus();
@@ -292,4 +464,42 @@ document.addEventListener('DOMContentLoaded', function() {
             verifyPerson();
         }
     });
+    
+    // Event listeners para el reproductor de audio
+    const audioPlayer = document.getElementById('audioPlayer');
+    
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        document.getElementById('duration').textContent = formatTime(audioPlayer.duration);
+    });
+    
+    audioPlayer.addEventListener('timeupdate', function() {
+        const currentTime = audioPlayer.currentTime;
+        const duration = audioPlayer.duration;
+        
+        document.getElementById('currentTime').textContent = formatTime(currentTime);
+        
+        if (duration) {
+            const progressPercent = (currentTime / duration) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+        }
+    });
+    
+    audioPlayer.addEventListener('ended', function() {
+        nextSong();
+    });
+    
+    audioPlayer.addEventListener('pause', function() {
+        isPlaying = false;
+        updatePlayPauseButton();
+    });
+    
+    audioPlayer.addEventListener('play', function() {
+        isPlaying = true;
+        updatePlayPauseButton();
+    });
+    
+    // Establecer volumen inicial
+    setTimeout(() => {
+        setVolume();
+    }, 100);
 });
