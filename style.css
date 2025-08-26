@@ -11,7 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container {
@@ -235,8 +235,7 @@ h2 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     margin: 0;
     z-index: 1000;
 }
