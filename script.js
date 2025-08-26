@@ -90,9 +90,35 @@ function createSpecialHeartForMarina() {
     });
 }
 
+// Array global de mensajes para Marina
+const loveMessages = [
+    "A veces pienso que lo más bonito de conocer a alguien no es apresurarse, sino ir descubriendo poco a poco las pequeñas cosas que hacen única a esa persona. Contigo siento eso, que cada día hay algo nuevo que aprender y apreciar.",
+    
+    "Me gusta la idea de que el amor no se trata de poseer ni de limitar, sino de acompañar. Y contigo, lo que más deseo es acompañar tu camino, respetando tu espacio y valorando tu libertad.",
+    
+    "Siento que la paciencia es la base de todo lo que realmente vale la pena. No quiero correr ni adelantarnos a nada, me basta con compartir el presente contigo y dejar que las cosas fluyan a su propio ritmo.",
+    
+    "Hay algo especial en verte ser tú misma, auténtica y libre. Eso me inspira a mí también a ser genuino y transparente, sin máscaras ni apariencias.",
+    
+    "Quiero que sepas que tu importancia en mi vida no depende del tiempo que llevemos conociéndonos, sino de lo que transmites y despiertas en mí. Y eso ya es bastante significativo.",
+    
+    "Creo que el amor verdadero empieza con la capacidad de escuchar y entender, más que con grandes palabras. Y yo quiero escucharte siempre, incluso en lo que no dices, en los silencios que también hablan.",
+    
+    "Aprender a conocerte es como leer un libro que no quiero terminar nunca. Cada página me sorprende, y prefiero avanzar con calma para disfrutar de cada detalle.",
+    
+    "Admiro la fuerza que hay en tu libertad, y me hace feliz la idea de que, si alguna vez llego a formar parte de tu mundo, sea desde el respeto y no desde la imposición.",
+    
+    "No tengo prisa, porque sé que lo que se construye despacio suele tener raíces más profundas. Y contigo quiero construir algo así, aunque todavía estemos en los primeros pasos.",
+    
+    "Lo que más me importa ahora es que sepas que valoro quién eres, sin condiciones, sin expectativas que te aten. Solo con el deseo de caminar a tu lado mientras me lo permitas."
+];
+
+let currentMessageIndex = 0;
+
 function showSpecialLoveMessage() {
     const scoreElement = document.getElementById('compatibilityScore');
     const descriptionElement = document.getElementById('compatibilityDescription');
+    const heartButton = document.getElementById('heartButton');
     
     // Mostrar mensaje amoroso especial
     scoreElement.innerHTML = '💖 Mensaje Especial 💖';
@@ -100,13 +126,41 @@ function showSpecialLoveMessage() {
     scoreElement.style.display = 'block';
     scoreElement.style.color = '#e91e63';
     
-    const loveMessage = `✨ "Quiero que sepas que valoro mucho la libertad que tienes y la manera en que vives tu vida. Para mí eres una persona muy especial y cada momento que compartimos me hace sentir que eres alguien importante. No busco cambiar nada en ti, al contrario, me gusta acompañar lo que ya eres." ✨`;
+    // Mostrar el primer mensaje
+    const loveMessage = `✨ "${loveMessages[currentMessageIndex]}" ✨`;
     
     descriptionElement.innerHTML = loveMessage;
     descriptionElement.style.opacity = '1';
     descriptionElement.style.display = 'block';
     
-    console.log('💕 Mensaje especial mostrado para Marina');
+    // Mostrar el botón corazón después de 3 segundos
+    setTimeout(() => {
+        heartButton.style.display = 'flex';
+        heartButton.style.opacity = '0';
+        heartButton.style.animation = 'buttonReveal 1s ease-out forwards';
+    }, 3000);
+    
+    console.log('💕 Mensaje especial mostrado para Marina:', currentMessageIndex + 1);
+}
+
+function changeMessage() {
+    const descriptionElement = document.getElementById('compatibilityDescription');
+    
+    // Incrementar índice y volver al inicio si llegamos al final
+    currentMessageIndex = (currentMessageIndex + 1) % loveMessages.length;
+    
+    // Efecto de transición
+    descriptionElement.style.opacity = '0';
+    descriptionElement.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+        const loveMessage = `✨ "${loveMessages[currentMessageIndex]}" ✨`;
+        descriptionElement.innerHTML = loveMessage;
+        descriptionElement.style.opacity = '1';
+        descriptionElement.style.transform = 'translateY(0)';
+    }, 300);
+    
+    console.log('💕 Mensaje cambiado a:', currentMessageIndex + 1);
 }
 
 function showAccessDenied() {
@@ -139,12 +193,21 @@ function resetForm() {
     const verificationSection = document.getElementById('verificationSection');
     const animationSection = document.getElementById('animationSection');
     const verificationInput = document.getElementById('verificationInput');
+    const heartButton = document.getElementById('heartButton');
     
     animationSection.style.display = 'none';
     verificationSection.style.display = 'block';
     
     verificationInput.value = '';
     verificationInput.focus();
+    
+    // Resetear el índice del mensaje para la próxima vez
+    currentMessageIndex = 0;
+    
+    // Ocultar el botón corazón
+    if (heartButton) {
+        heartButton.style.display = 'none';
+    }
 }
 
 function resetAnimations() {

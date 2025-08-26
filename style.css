@@ -194,6 +194,7 @@ h2 {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 @keyframes scoreReveal {
@@ -393,6 +394,43 @@ h2 {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.heart-button {
+    background: linear-gradient(45deg, #e91e63, #f8bbd9);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 2em;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: heartPulse 2s ease-in-out infinite;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(233, 30, 99, 0.5);
+    animation: heartPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
     }
 }
 
