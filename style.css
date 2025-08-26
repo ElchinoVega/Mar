@@ -1,0 +1,467 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+}
+
+.question-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #e91e63;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #8e24aa;
+    margin-bottom: 30px;
+}
+
+.couple-inputs {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.person-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.person-input label {
+    font-weight: bold;
+    color: #8e24aa;
+    font-size: 1.1em;
+}
+
+.api-config {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 2px dashed #9c27b0;
+}
+
+.api-config label {
+    display: block;
+    font-weight: bold;
+    color: #9c27b0;
+    margin-bottom: 8px;
+}
+
+.api-config input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid #9c27b0;
+    border-radius: 15px;
+    outline: none;
+    font-size: 0.9em;
+}
+
+.api-config small {
+    margin-top: 5px;
+}
+
+.api-config a {
+    color: #e91e63;
+    text-decoration: none;
+}
+
+.api-config a:hover {
+    text-decoration: underline;
+}
+
+.person-input input, .person-input select {
+    padding: 12px 18px;
+    font-size: 1em;
+    border: 3px solid #e91e63;
+    border-radius: 20px;
+    outline: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 150px;
+}
+
+.person-input input:focus, .person-input select:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+}
+
+.love-symbol {
+    font-size: 2.5em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.compatibility-result {
+    margin-top: 40px;
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 192, 203, 0.1);
+    border-radius: 20px;
+    border: 2px solid rgba(233, 30, 99, 0.2);
+}
+
+.compatibility-score {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    opacity: 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.compatibility-description {
+    font-size: 1.4em;
+    color: #8e24aa;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes scoreReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+#submitBtn {
+    background: linear-gradient(45deg, #e91e63, #9c27b0);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#submitBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(233, 30, 99, 0.4);
+}
+
+.animation-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 60px 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 90vh;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    max-height: 95vh;
+}
+
+.heart-container {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.heart-text {
+    position: relative;
+    margin: 10px auto;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: bold;
+    color: #e91e63;
+    text-shadow: 1px 1px 2px rgba(233, 30, 99, 0.4);
+    animation: heartbeat 4s ease-in-out infinite;
+    line-height: 1.1;
+    text-align: left;
+    white-space: pre;
+    overflow: visible;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.heart-line {
+    opacity: 0;
+    animation: lineAppear 0.8s ease-out forwards;
+    letter-spacing: 1px;
+}
+
+@keyframes lineAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.arrow {
+    font-size: 4em;
+    position: absolute;
+    right: -100px;
+    opacity: 0;
+    animation: arrowShoot 2s ease-out 0.5s forwards;
+}
+
+@keyframes arrowShoot {
+    0% {
+        right: -100px;
+        opacity: 0;
+        transform: rotate(-45deg);
+    }
+    50% {
+        right: 50%;
+        opacity: 1;
+        transform: rotate(-45deg);
+    }
+    100% {
+        right: 45%;
+        opacity: 0;
+        transform: rotate(-45deg) scale(0.5);
+    }
+}
+
+
+.love-message {
+    font-size: 1.5em;
+    color: #8e24aa;
+    margin-top: 30px;
+    opacity: 0;
+    animation: messageReveal 1s ease-out 3s forwards;
+}
+
+@keyframes messageReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reset-btn {
+    background: linear-gradient(45deg, #9c27b0, #e91e63);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: buttonReveal 1s ease-out 4s forwards;
+}
+
+@keyframes buttonReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(156, 39, 176, 0.4);
+}
+
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 2em;
+    opacity: 0;
+    animation: floatHeart 6s ease-in-out infinite;
+}
+
+.floating-heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-heart:nth-child(2) {
+    left: 30%;
+    animation-delay: 1.5s;
+}
+
+.floating-heart:nth-child(3) {
+    left: 60%;
+    animation-delay: 3s;
+}
+
+.floating-heart:nth-child(4) {
+    left: 80%;
+    animation-delay: 4.5s;
+}
+
+@keyframes floatHeart {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(100px) rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+    }
+    
+    .animation-section {
+        padding: 30px 15px;
+        width: 98%;
+        min-height: 70vh;
+    }
+    
+    .heart-container {
+        min-height: 50vh;
+        padding: 10px;
+    }
+    
+    .heart-text {
+        font-size: 10px;
+        line-height: 1.1;
+    }
+    
+    .arrow {
+        font-size: 3em;
+    }
+    
+    .couple-inputs {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .person-input input, .person-input select {
+        width: 120px;
+        font-size: 0.9em;
+    }
+    
+    .love-symbol {
+        font-size: 2em;
+    }
+    
+    .compatibility-result {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .compatibility-score {
+        font-size: 2.5em;
+    }
+    
+    .compatibility-description {
+        font-size: 1.1em;
+        padding: 20px;
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .heart-text {
+        font-size: 8px;
+    }
+    
+    .compatibility-score {
+        font-size: 2em;
+    }
+    
+    .compatibility-description {
+        font-size: 1em;
+        padding: 15px;
+    }
+}
