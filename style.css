@@ -672,11 +672,27 @@ h2 {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: inset 0 2px 10px rgba(233, 30, 99, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.spotify-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 352px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
 }
 
 .spotify-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
 }
 
 .spotify-note {
@@ -954,10 +970,16 @@ h2 {
     
     .spotify-container {
         padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .spotify-iframe-wrapper {
+        height: 300px;
+        border-radius: 10px;
     }
     
     .spotify-container iframe {
-        height: 300px;
+        border-radius: 10px;
     }
     
     .spotify-header h3 {
@@ -1017,8 +1039,22 @@ h2 {
 }
 
 @media (max-width: 480px) {
+    .spotify-section {
+        padding: 15px 10px;
+    }
+    
+    .spotify-container {
+        padding: 10px;
+        margin: 5px 0;
+    }
+    
+    .spotify-iframe-wrapper {
+        height: 280px;
+        border-radius: 8px;
+    }
+    
     .spotify-container iframe {
-        height: 250px;
+        border-radius: 8px;
     }
     
     .spotify-note {
