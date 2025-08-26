@@ -108,15 +108,52 @@ h2 {
 
 .special-photo {
     width: 300px;
-    height: 300px;
-    border-radius: 50%;
+    height: 260px;
+    position: relative;
     border: 8px solid #e91e63;
     box-shadow: 0 15px 40px rgba(233, 30, 99, 0.5);
     animation: photoReveal 2s ease-out forwards, photoFloat 3s ease-in-out infinite 2s;
     opacity: 0;
     background: linear-gradient(45deg, #ff9a9e, #fecfef);
-    position: relative;
     overflow: hidden;
+    transform: rotate(-45deg);
+}
+
+.special-photo::before {
+    content: '';
+    width: 150px;
+    height: 240px;
+    background: inherit;
+    border-radius: 150px 150px 0 0;
+    position: absolute;
+    left: 75px;
+    top: -75px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.special-photo::after {
+    content: '';
+    width: 150px;
+    height: 240px;
+    background: inherit;
+    border-radius: 150px 150px 0 0;
+    position: absolute;
+    left: 75px;
+    top: -75px;
+    transform: rotate(45deg);
+    transform-origin: 0 100%;
+}
+
+.special-photo img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 1;
 }
 
 .photo-wrapper {
@@ -264,13 +301,13 @@ h2 {
     position: relative;
     margin: 10px auto;
     font-family: 'Courier New', monospace;
-    font-size: 11px;
+    font-size: 9px;
     font-weight: bold;
     color: #e91e63;
     text-shadow: 1px 1px 2px rgba(233, 30, 99, 0.4);
     animation: heartbeat 4s ease-in-out infinite;
-    line-height: 1.1;
-    text-align: left;
+    line-height: 1.0;
+    text-align: center;
     white-space: pre;
     overflow: visible;
     width: 100%;
@@ -476,6 +513,32 @@ h2 {
     animation: heartPulse 0.5s ease-in-out infinite;
 }
 
+.ascii-button {
+    background: linear-gradient(45deg, #9c27b0, #e91e63);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.ascii-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5);
+}
+
+.ascii-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 @keyframes heartPulse {
     0%, 100% {
         transform: scale(1);
@@ -575,8 +638,8 @@ h2 {
     }
     
     .heart-text {
-        font-size: 10px;
-        line-height: 1.1;
+        font-size: 7px;
+        line-height: 0.9;
     }
     
     .arrow {
@@ -602,8 +665,21 @@ h2 {
     
     .special-photo {
         width: 250px;
-        height: 250px;
+        height: 220px;
         border: 6px solid #e91e63;
+    }
+    
+    .special-photo::before,
+    .special-photo::after {
+        width: 125px;
+        height: 200px;
+        left: 62.5px;
+        top: -62.5px;
+    }
+    
+    .special-photo img {
+        width: 350px;
+        height: 350px;
     }
     
     .photo-frame {
@@ -615,7 +691,8 @@ h2 {
 
 @media (max-width: 480px) {
     .heart-text {
-        font-size: 8px;
+        font-size: 6px;
+        line-height: 0.8;
     }
     
     .compatibility-score {
@@ -629,7 +706,20 @@ h2 {
     
     .special-photo {
         width: 200px;
-        height: 200px;
+        height: 180px;
+    }
+    
+    .special-photo::before,
+    .special-photo::after {
+        width: 100px;
+        height: 160px;
+        left: 50px;
+        top: -50px;
+    }
+    
+    .special-photo img {
+        width: 280px;
+        height: 280px;
     }
     
     .photo-frame {
