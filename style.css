@@ -119,37 +119,6 @@ h2 {
     transform: rotate(-45deg);
 }
 
-.special-photo::before {
-    content: '';
-    width: 150px;
-    height: 240px;
-    background: transparent;
-    border: 8px solid #e91e63;
-    border-radius: 150px 150px 0 0;
-    position: absolute;
-    left: 75px;
-    top: -75px;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-    z-index: 2;
-    box-sizing: border-box;
-}
-
-.special-photo::after {
-    content: '';
-    width: 150px;
-    height: 240px;
-    background: transparent;
-    border: 8px solid #e91e63;
-    border-radius: 150px 150px 0 0;
-    position: absolute;
-    left: 75px;
-    top: -75px;
-    transform: rotate(45deg);
-    transform-origin: 0 100%;
-    z-index: 2;
-    box-sizing: border-box;
-}
 
 .special-photo img {
     position: absolute;
