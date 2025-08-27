@@ -103,7 +103,27 @@ const loveMessages = [
     
     "No tengo prisa, porque sé que lo que se construye despacio suele tener raíces más profundas. Y contigo quiero construir algo así, aunque todavía estemos en los primeros pasos.",
     
-    "Lo que más me importa ahora es que sepas que valoro quién eres, sin condiciones, sin expectativas que te aten. Solo con el deseo de caminar a tu lado mientras me lo permitas."
+    "Lo que más me importa ahora es que sepas que valoro quién eres, sin condiciones, sin expectativas que te aten. Solo con el deseo de caminar a tu lado mientras me lo permitas.",
+    
+    "El amor no se mide en promesas grandes, sino en los pequeños gestos de respeto y cuidado que se repiten cada día.",
+    
+    "Una relación verdadera no se trata de llenar vacíos, sino de compartir abundancia: lo que cada uno ya es, con libertad y sin miedo.",
+    
+    "Amar es saber que ninguno pertenece al otro, sino que ambos eligen encontrarse en un mismo camino cada día.",
+    
+    "Lo que realmente importa en una relación no es la perfección, sino la sinceridad y la paciencia para aceptar las diferencias.",
+    
+    "La libertad es la raíz del amor auténtico: sin ella, no florece nada duradero.",
+    
+    "Cuando ambos son libres de ser ellos mismos, la relación deja de ser una carga y se convierte en un espacio seguro donde crecer juntos.",
+    
+    "El verdadero amor no exige renuncias forzadas, sino que inspira a dar lo mejor de uno mismo de manera natural.",
+    
+    "Lo esencial en una relación no es la cantidad de tiempo compartido, sino la calidad del encuentro cuando las almas se reconocen.",
+    
+    "Amar con libertad es celebrar que cada uno tiene un mundo propio, y aun así, decidir compartirlo sin perderse en el intento.",
+    
+    "Solo cuando los dos valoran la libertad del otro, el amor se convierte en una elección diaria y no en una obligación."
 ];
 
 let currentMessageIndex = 0;
